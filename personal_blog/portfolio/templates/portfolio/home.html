@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+    <h1>Temirlan's Portfolio</h1>
+
+    {% load static %}
+
+    <img src="{% static 'portfolio/b3a632a5547d22c553075514add449db.jpg' %}">
+
+    {% for project in projects %}
+
+    <h2>{{project.title}}</h2>
+    <p>{{project.description}}</p>
+    <img src="{{ project.image.url }}" height=70 , width=70>
+    {% if project.url %}
+    <br><a href="{{ project.url }}">Link</a>
+    {% endif %}
+
+    {% endfor %}
+    <a a href="{% url 'blog:all_blogs' %}">Blog</a>
+    <br>
+
+{% endblock %}
